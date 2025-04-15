@@ -15,12 +15,6 @@
     <a href="https://api.whatsapp.com/send?phone=50683699183&text=Hola, quiero solicitar información sobre el técnico de asistente veterinario!" class="btn-wsp" target="_blank" style="background-color: #164193;">
         <i class="fab fa-whatsapp"></i>
     </a>
-    
-    <!-- Ejemplo 1: Facebook como botón flotante en la esquina inferior derecha -->
-    <a href="https://www.facebook.com/p/Instituto-Veterinario-San-Mart%C3%ADn-de-Porres-100090860406394/" class="facebook-button fb-bottom-right" aria-label="Facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-
     <!-- Hero Section con navegación integrada -->
     <section id="inicio" class="hero-section with-nav">
         <!-- Overlay para el fondo -->
@@ -53,6 +47,9 @@
 
         <!-- Side Menu -->
         <div class="side-menu" id="side-menu">
+            <button class="side-menu-close" id="side-menu-close" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
             <ul class="side-menu-list">
                 <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
                 <li><a href="#programa"><i class="fas fa-book"></i> Programa</a></li>
@@ -72,9 +69,8 @@
                     <a href="#programa" class="btn btn-secondary">Conoce Nuestro Programa</a>
                 </div>
             </div>
-            <div class="hero-image fade-in floating-container">
-                <img src="img/asistente_veterinario.jpg" alt="Asistente Veterinario">
-            </div>
+            <!-- Reemplazamos la imagen como elemento por un div con fondo -->
+            <div class="hero-background fade-in"></div>
         </div>
     </section>
     
@@ -450,12 +446,14 @@
                         <p><i class="fas fa-phone"></i> +506 8369-9183</p>
                         <p><i class="fas fa-envelope"></i> institutosanmartin83@gmail.com</p>
                     </address>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/p/Instituto-Veterinario-San-Mart%C3%ADn-de-Porres-100090860406394/" class="facebook-button" aria-label="Facebook" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
                     </div>
                 </div>
+            </div>
+            <!-- Redes sociales en el footer -->
+            <div class="footer-social-links">
+                <a href="https://www.facebook.com/p/Instituto-Veterinario-San-Mart%C3%ADn-de-Porres-100090860406394/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Instituto Veterinario San Martin de Porres. Todos los derechos reservados.</p>

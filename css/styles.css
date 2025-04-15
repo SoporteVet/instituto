@@ -164,19 +164,7 @@ p {
     color: white;
 }
 
-/* Header */
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(22, 65, 147, 0.95); /* var(--color-primary) con transparencia */
-    box-shadow: var(--box-shadow);
-    z-index: 1000;
-    transition: all var(--transition-fast);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
+
 
 .header-container {
     display: flex;
@@ -281,7 +269,7 @@ p {
 .hero {
     height: 100vh;
     min-height: 600px;
-    background-image: url('../img/hero-bg.jpg');
+    background-image: url('asistente_veterinario.jpg'); /* Cambia 'tu-imagen.jpg' por el nombre correcto */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -291,14 +279,7 @@ p {
     align-items: center;
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(22, 65, 147, 0.9), rgba(42, 150, 211, 0.7));
-}
+
 
 /* Ajuste para corregir el problema de superposición y bajar el contenido */
 .hero-container {
@@ -1046,6 +1027,29 @@ p {
     right: 20px;
 }
 
+/* Botón Facebook como imagen de fondo */
+.fb-background {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #1877F2;
+    background-image: url('../img/facebook-icon.png'); /* Asegúrate de tener esta imagen */
+    background-size: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.fb-background:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(24, 119, 242, 0.4);
+}
+
 .social-links {
     display: flex;
     justify-content: center; /* Centrar horizontalmente */
@@ -1069,6 +1073,49 @@ p {
 .social-links a:hover {
     background-color: var(--color-accent);
     transform: translateY(-5px);
+}
+
+/* Botón de redes sociales en el footer */
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer-social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #1877F2; /* Color oficial de Facebook */
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+}
+
+.footer-social-links a.instagram {
+    background-color: #E4405F; /* Color oficial de Instagram */
+}
+
+.footer-social-links a.tiktok {
+    background-color: #000000; /* Color oficial de TikTok */
+}
+
+.footer-social-links a.instagram:hover {
+    box-shadow: 0 5px 15px rgba(228, 64, 95, 0.4);
+}
+
+.footer-social-links a.tiktok:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .footer-bottom {
@@ -1430,7 +1477,7 @@ p {
 .hero-section.with-nav {
     height: 100vh;
     min-height: 600px;
-    background-image: url('../img/hero-bg.jpg');
+    background-image: url('asistente_veterinario.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1452,11 +1499,6 @@ p {
     transition: all 0.3s ease;
 }
 
-.navbar-container.scrolled {
-    background-color: rgba(22, 65, 147, 0.95); /* Color con transparencia al hacer scroll */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 5px 0; /* Reducido de 10px para mayor compacidad al hacer scroll */
-}
 
 .navbar-container .container {
     display: flex;
@@ -2094,4 +2136,51 @@ p {
     .mobile-nav-toggle {
         display: block;
     }
+}
+
+/* Ajustes para el hero background en lugar de imagen como elemento */
+.hero-background {
+    flex: 1;
+    max-width: 450px;
+    height: 450px;
+    margin-top: 50px;
+    background-image: url('asistente_veterinario.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 5px solid #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Agregamos una animación float si no existe */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Botón de cierre del side menú */
+.side-menu-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--dark-text);
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.side-menu-close:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
 }

@@ -183,6 +183,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Botón de cierre del side menú
+    const sideMenuClose = document.getElementById('side-menu-close');
+    if (sideMenuClose && sideMenu) {
+        sideMenuClose.addEventListener('click', () => {
+            sideMenu.classList.remove('open');
+            if (menuToggle) menuToggle.classList.remove('active');
+        });
+    }
+
     // Inicializar funciones
     revealOnScroll();
 });
