@@ -327,4 +327,41 @@
     .faq-question h4 {
         font-size: 1rem;
     }
+    
+    /* Nuevos estilos para hero en móvil */
+      .hero-metodologia {
+        align-items: flex-start; /* Alinear al inicio como la primera imagen */
+        justify-content: center; /* Mantener centrado horizontalmente */
+        padding-top: 20vh; /* Ajustar posición vertical desde arriba */
+    }
+    
+    .content-bottom {
+        text-align: center; /* Centrar el texto */
+        padding-left: 0; /* Eliminar padding lateral */
+        max-width: 100%; /* Ocupar todo el ancho disponible */
+        margin: 0 auto; /* Centrar el contenedor */
+        padding: 0 15px; /* Agregar pequeño padding horizontal */
+    }
+    
+    .content-bottom h1 {
+        font-size: 2rem; /* Ajustar tamaño del título */
+        margin-bottom: 10px;
+    }
+    
+    .content-bottom .subtitle {
+        font-size: 1rem; /* Ajustar tamaño del subtítulo */
+        line-height: 1.4; /* Ajustar interlineado */
+        max-width: 280px; /* Limitar ancho para mantener proporción similar a la imagen */
+        margin: 0 auto; /* Centrar el subtítulo */
+    }
+    
+    /* Botón cerrar menú en blanco */
+    .side-menu-close, 
+    .side-menu-close i {
+        color: white !important;
+    }
+    
+    #side-menu-close {
+        color: white !important;
+    }
 }

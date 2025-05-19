@@ -613,31 +613,115 @@
 }
 
 @media (max-width: 576px) {
-    .section-title {
-        font-size: 1.8rem;
+    .content-bottom {
+        text-align: center; /* Alinear texto a la izquierda */
+        padding-left: 20px; /* Agregar padding izquierdo */
+        max-width: 100%; /* Ocupar todo el ancho disponible */
+        margin: 0; /* Eliminar márgenes automáticos */
+        padding-right: 15px; /* Padding a la derecha */
     }
-    
+
+    .hero-instalaciones {
+        align-items: flex-start; /* Mantener alineación al inicio */
+        justify-content: flex-start; /* Alinear a la izquierda */
+        padding-top: 20vh; /* Mantener posición vertical */
+    }
+
     .content-bottom h1 {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Ajustar tamaño del título */
+        margin-bottom: 10px;
+    }
+
+    .content-bottom .subtitle {
+        font-size: 1rem; /* Ajustar tamaño del subtítulo */
+        line-height: 1.4; /* Ajustar interlineado */
+        max-width: none; /* Eliminar ancho máximo */
+        margin: 0; /* Eliminar márgenes automáticos */
     }
     
-    .slide img {
-        height: 250px;
+    /* Alineación de listas con checks para móvil */
+    .area-features {
+        text-align: left; /* Alinear texto a la izquierda */
+        padding-left: 15px; /* Un poco de padding para mejor legibilidad */
+    }
+    
+    .area-features li {
+        justify-content: flex-start; /* Alinear contenido a la izquierda */
+        text-align: left; /* Texto a la izquierda */
+        padding-left: 0;
+        margin-bottom: 8px; /* Espacio entre items */
     }
     
     .area-content {
-        padding: 20px;
+        text-align: center; /* El título y descripción centrados */
     }
     
-    .area-content h4 {
-        font-size: 1.2rem;
+    .area-content p {
+        text-align: center; /* Descripción centrada */
     }
     
-    .testimonio-contenido {
-        padding: 20px;
+    /* Para cualquier otro elemento con checks o listas en la página */
+    [class*="check"], [class*="feature"] {
+        text-align: left !important; /* Alinear a la izquierda */
     }
     
-    .btn-cta {
-        padding: 12px 25px;
+    li, .check-item {
+        text-align: left; /* Texto alineado a la izquierda */
+        display: flex;
+        justify-content: flex-start; /* Alineación a la izquierda */
+        align-items: flex-start;
+    }
+    
+    /* Centrar el sidebar menu en móvil */
+    .sidebar, .side-menu, .mobile-menu, nav.side-nav {
+        text-align: center !important;
+    }
+    
+    .sidebar a, .side-menu a, .mobile-menu a, nav.side-nav a,
+    .sidebar .menu-item, .side-menu .menu-item, .mobile-menu .menu-item, nav.side-nav .menu-item {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .sidebar i, .side-menu i, .mobile-menu i, nav.side-nav i {
+        margin-right: 10px !important;
+    }
+    
+    /* Centrar específicamente el side-menu para móvil */
+    #side-menu {
+        text-align: center !important;
+    }
+    
+    .side-menu-list {
+        padding-left: 0 !important;
+    }
+    
+    .side-menu-list li {
+        justify-content: center !important;
+        text-align: center !important;
+    }
+    
+    .side-menu-list a {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 12px 0 !important;
+    }
+    
+    .side-menu-list i {
+        margin-right: 10px !important;
+    }
+    
+    /* Botón cerrar menú en blanco */
+    .side-menu-close, 
+    .side-menu-close i {
+        color: white !important;
+    }
+    
+    #side-menu-close {
+        color: white !important;
     }
 }
