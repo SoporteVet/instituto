@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalaciones - Instituto Veterinario San Martin de Porres</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/wsp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/instalaciones.css">
+</head>
+<body>
+     <a href="https://api.whatsapp.com/send?phone=50683699183&text=Hola, quiero solicitar información sobre el técnico de asistente veterinario!" class="btn-wsp" target="_blank" style="background-color: #25d366;">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Menú de navegación principal -->
+    <div class="navbar-container">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/empresa_logo.png" alt="Instituto San Martin de Porres" class="logo-img">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="index.html#programa" class="nav-link">Programa</a></li>
+                    <li><a href="metodologia.html" class="nav-link">Metodología</a></li>
+                    <li><a href="instalaciones.html" class="nav-link">Instalaciones</a></li>
+                    <li><a href="index.html#contacto" class="nav-link highlight">Contáctanos</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+    <!-- Menú lateral -->
+    <div class="side-menu" id="side-menu">
+        <button class="side-menu-close" id="side-menu-close" aria-label="Cerrar menú">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="side-menu-list">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="index.html#programa"><i class="fas fa-book"></i> Programa</a></li>
+            <li><a href="metodologia.html"><i class="fas fa-chalkboard-teacher"></i> Metodología</a></li>
+            <li><a href="instalaciones.html"><i class="fas fa-building"></i> Instalaciones</a></li>
+            <li><a href="index.html#contacto"><i class="fas fa-envelope"></i> Contáctanos</a></li>
+        </ul>
+    </div>
+    <!-- Hero Section con imagen principal -->
+    <section class="hero-instalaciones">
+        <div class="container hero-container">
+            <div class="hero-content content-bottom">
+                <h1 class="fade-in">NUESTRAS INSTALACIONES</h1>
+                <p class="subtitle fade-in delay-1">Espacios diseñados para un aprendizaje integral en veterinaria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de introducción -->
+    <section class="instalaciones-intro">
+        <div class="container">
+            <h2 class="section-title">Bienvenidos a Nuestras Instalaciones</h2>
+            <p class="section-description">En el Instituto Veterinario San Martin de Porres, contamos con instalaciones modernas y completamente equipadas para garantizar una formación práctica y de calidad. Nuestros espacios están diseñados para proporcionar un ambiente de aprendizaje óptimo, donde los estudiantes pueden desarrollar sus habilidades con equipamiento profesional y bajo la supervisión de expertos en el campo veterinario.</p>
+        </div>
+    </section>
+
+    <!-- Áreas de las instalaciones -->
+    <section class="areas-instalaciones">
+        <div class="container">
+            <h3 class="subsection-title">Nuestras áreas especializadas</h3>
+            <div class="areas-grid">
+                <div class="area-card reveal">
+                    <div class="area-image">
+                        <img src="img/aulas_pruena.webp" alt="Aulas de formación">
+                    </div>
+                    <div class="area-content">
+                        <h4>Aulas de formación</h4>
+                        <p>Espacios amplios y luminosos, equipados para garantizar una experiencia de aprendizaje óptima.</p>
+                        <ul class="area-features">
+                            <li><i class="fas fa-check-circle"></i> Capacidad para 10 estudiantes</li>
+                            <li><i class="fas fa-check-circle"></i> Proyectores de alta calidad</li>
+                            <li><i class="fas fa-check-circle"></i> Profesores con más de 10 años de experiencia</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="area-card reveal delay-1">
+                    <div class="area-image">
+                        <img src="img/Inst_Laboratorio.jpg" alt="Laboratorio de prácticas">
+                    </div>
+                    <div class="area-content">
+                        <h4>Laboratorio de prácticas</h4>
+                        <p>Equipamiento profesional para análisis clínicos, hematología, parasitología y microbiología veterinaria.</p>
+                        <ul class="area-features">
+                            <li><i class="fas fa-check-circle"></i> Microscopios de alta calidad de visualización</li>
+                            <li><i class="fas fa-check-circle"></i> Equipo de hematología</li>
+                            <li><i class="fas fa-check-circle"></i> Área de preparación y almacenamiento de muestras</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="area-card reveal delay-2">
+                    <div class="area-image">
+                        <img src="img/Inst_Quirofano.jpg" alt="Quirófano de prácticas">
+                    </div>
+                    <div class="area-content">
+                        <h4>Quirófano de prácticas</h4>
+                        <p>Tenemos un quirófano veterinario real donde los estudiantes aprenden técnicas de asistencia quirúrgica.</p>
+                        <ul class="area-features">
+                            <li><i class="fas fa-check-circle"></i> Mesa de operaciones veterinaria</li>
+                            <li><i class="fas fa-check-circle"></i> Instrumental quirúrgico completo</li>
+                            <li><i class="fas fa-check-circle"></i> Equipos de alta tecnología</li>
+                        </ul>
+                    </div>
+                </div>
+                
+        
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de imágenes modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <!-- Mapa de instalaciones -->
+    <section class="mapa-instalaciones">
+        <div class="container">
+            <h3 class="subsection-title">Ubicación y distribución</h3>
+            <div class="mapa-container">
+                <div class="mapa-info">
+                    <h4>Cómo llegar</h4>
+                    <p>Nuestro instituto está ubicado en una zona estratégica de fácil acceso mediante transporte público y con amplio estacionamiento para vehículos particulares.</p>
+                    <address>
+                        <i class="fas fa-map-marker-alt"></i> Mall Zona Centro, tercer planta, San José, San Rafael Abajo de Desamparados<br>
+                    </address>
+                    <a href="https://maps.app.goo.gl/jWLgCb6DHDN88YtX9" target="_blank" class="btn-mapa">Ver en Google Maps</a>
+                </div>
+                <div class="mapa-imagen">
+                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1sen!2scr!4v1747615007371!5m2!1sen!2scr!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRGxqcVdkTVE.!2m2!1d9.896052122663997!2d-84.08608157162404!3f5.120236460755662!4f-37.68279336409166!5f0.4000000000000002" width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA - Visita nuestras instalaciones -->
+    <section class="visita-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h3>¿Quieres conocer nuestras instalaciones en persona?</h3>
+                <p>Agenda una visita guiada y descubre el ambiente donde te formarás como asistente veterinario profesional.</p>
+                <a href="index.html#contacto" class="btn-cta">Programa tu visita</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/instalaciones.js"></script>
+</body>
+</html>

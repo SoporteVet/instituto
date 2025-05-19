@@ -1,0 +1,330 @@
+/* Estilos específicos para la página de metodología */
+
+/* Sección hero de metodología */
+.hero-section_2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('../img/metodologia.jpg') center center/cover no-repeat;
+    color: #fff;
+    z-index: 1;
+}
+
+.hero-section_2 .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section_2 .hero-overlay {
+    display: none;
+}
+
+.hero-section_2 .hero-image {
+    display: none;
+}
+
+/* Hero Section Metodología */
+.hero-metodologia {
+    height: 100vh;
+    min-height: 600px;
+    background-image: url('../img/metodologia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* Alinear el contenido al inicio */
+    justify-content: flex-start; /* Alinear horizontalmente al inicio */
+    padding-top: 10vh; /* Ajustar la altura desde la parte superior */
+}
+
+.content-bottom {
+    position: relative;
+    max-width: 50%; /* Limitar el ancho del texto */
+}
+
+/* Sección principal de metodología */
+.metodologia-section {
+    padding: 120px 0 80px; /* Aumentado el padding superior de 80px a 120px */
+    background-color: #f9f9f9;
+}
+
+.metodologia-section .section-title {
+    text-align: center;
+    color: var(--heading-color);
+    margin-bottom: 30px;
+    margin-top: 20px; /* Añadido margen superior */
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.metodologia-section .section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 70px; /* Aumentado el margen inferior de 50px a 70px */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* Principios pedagógicos */
+.principios-container {
+    margin-bottom: 60px;
+}
+
+.subsection-title {
+    color: var(--heading-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: var(--font-heading);
+    position: relative;
+}
+
+.principios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.principio-item {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.principio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.principio-numero {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+    opacity: 0.3;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+}
+
+.principio-item h4 {
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+}
+
+.principio-item p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Estilos para la metodología grid */
+.metodologia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.metodologia-card {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.metodologia-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.metodologia-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+}
+
+.metodologia-card h3 {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+}
+
+.metodologia-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.metodologia-extra {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    margin-bottom: 60px;
+    box-shadow: var(--box-shadow);
+}
+
+.metodologia-extra h3 {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+}
+
+.metodologia-extra p {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Sección de FAQ */
+.faq-section {
+    margin: 70px 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.faq-question {
+    background-color: var(--background-light);
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-question h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    font-family: var(--font-heading);
+}
+
+.faq-toggle {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    transition: transform var(--transition-fast);
+}
+
+.faq-answer {
+    background-color: #f9f9f9;
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    padding: 20px 25px;
+    max-height: 1000px;
+}
+
+.faq-item.active .faq-toggle i {
+    transform: rotate(45deg);
+}
+
+/* Animaciones */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .metodologia-section {
+        padding: 60px 0;
+    }
+    
+    .metodologia-section .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .principios-grid {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .metodologia-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .subsection-title {
+        font-size: 1.6rem;
+    }
+    
+    .principios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metodologia-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metodologia-extra {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .metodologia-section .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .subsection-title {
+        font-size: 1.4rem;
+    }
+    
+    .principio-item, .metodologia-card {
+        padding: 20px;
+    }
+    
+    .metodologia-extra {
+        padding: 25px;
+    }
+    
+    .faq-question h4 {
+        font-size: 1rem;
+    }
+}
