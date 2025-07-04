@@ -207,7 +207,9 @@ function handleContactForm() {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            // Obtener los datos del formulario antes de enviarlo
+            e.preventDefault(); // Prevenir el envío normal del formulario
+            
+            // Obtener los datos del formulario
             const nombre = this.querySelector('input[name="name"]').value;
             const email = this.querySelector('input[name="email"]').value;
             const telefono = this.querySelector('input[name="phone"]').value;
@@ -215,7 +217,6 @@ function handleContactForm() {
             
             // Validar que los campos requeridos estén llenos
             if (!nombre || !email || !mensaje) {
-                e.preventDefault();
                 showNotification('Por favor, completa todos los campos requeridos.', 'error');
                 return false;
             }
@@ -226,39 +227,34 @@ function handleContactForm() {
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
             
-            // Crear el mensaje para WhatsApp como alternativa
-            const whatsappMessage = `¡Hola! Me interesa información sobre el programa de Técnico Asistente Veterinario.
-
-📝 *Mis datos:*
-• Nombre: ${nombre}
-• Email: ${email}
-• Teléfono: ${telefono || 'No proporcionado'}
-
-💬 *Mi consulta:*
-${mensaje}
-
-¡Gracias!`;
+            // Crear FormData para enviar al servidor
+            const formData = new FormData(this);
             
-            // Guardar datos en localStorage para usar después del redirect
-            localStorage.setItem('formSubmitData', JSON.stringify({
-                nombre,
-                email,
-                telefono,
-                mensaje,
-                whatsappMessage
-            }));
-            
-            // Mostrar notificación de que se está enviando
-            showNotification('Enviando tu consulta...', 'info');
-            
-            // El formulario se enviará normalmente a FormSubmit
-            // Después del redirect, puedes mostrar una página de agradecimiento
-            
-            // Restaurar botón después de un momento (por si hay algún error)
-            setTimeout(() => {
+            // Enviar usando fetch para mantener control sobre la respuesta
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Éxito en el envío
+                    showSuccessModal(nombre, email, telefono, mensaje);
+                    
+                    // Limpiar formulario
+                    this.reset();
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showNotification('Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente o contáctanos por WhatsApp.', 'error');
+            })
+            .finally(() => {
+                // Restaurar botón
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 3000);
+            });
         });
     }
 }
@@ -339,3 +335,282 @@ function showNotification(message, type = 'info') {
     // Auto-cerrar después de 5 segundos
     setTimeout(closeNotification, 5000);
 }
+
+/**
+ * Muestra un modal de éxito más prominente después del envío del formulario
+ */
+function showSuccessModal(nombre, email, telefono, mensaje) {
+    // Crear el mensaje para WhatsApp
+    const whatsappMessage = `¡Hola! Me interesa información sobre el programa de Técnico Asistente Veterinario.
+
+📝 *Mis datos:*
+• Nombre: ${nombre}
+• Email: ${email}
+• Teléfono: ${telefono || 'No proporcionado'}
+
+💬 *Mi consulta:*
+${mensaje}
+
+¡Gracias!`;
+
+    // Crear el modal
+    const modal = document.createElement('div');
+    modal.className = 'success-modal';
+    modal.innerHTML = `
+        <div class="success-modal-overlay"></div>
+        <div class="success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>¡Mensaje enviado con éxito!</h2>
+            <p>Gracias <strong>${nombre}</strong>, hemos recibido tu consulta correctamente.</p>
+            <p>Nos pondremos en contacto contigo en las próximas <strong>24 horas</strong> al correo <strong>${email}</strong>${telefono ? ` o al teléfono <strong>${telefono}</strong>` : ''}.</p>
+            
+            <div class="contact-info">
+                <h3><i class="fas fa-info-circle"></i> También puedes contactarnos directamente:</h3>
+                <div class="contact-details">
+                    <p><i class="fas fa-phone"></i> +506 8369-9183</p>
+                    <p><i class="fas fa-envelope"></i> institutosanmartin83@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Mall Zona Centro, tercer planta, Desamparados</p>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-whatsapp" onclick="openWhatsApp('${encodeURIComponent(whatsappMessage)}')">
+                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                </button>
+                <button class="btn-close" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i> Cerrar
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Agregar estilos al modal
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+    `;
+
+    // Estilos para el overlay
+    const overlay = modal.querySelector('.success-modal-overlay');
+    overlay.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+    `;
+
+    // Estilos para el contenido del modal
+    const content = modal.querySelector('.success-modal-content');
+    content.style.cssText = `
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.3s ease-out;
+    `;
+
+    // Estilos para el icono de éxito
+    const successIcon = modal.querySelector('.success-icon');
+    successIcon.style.cssText = `
+        font-size: 4rem;
+        color: #4CAF50;
+        margin-bottom: 20px;
+        animation: successPulse 1s ease-in-out;
+    `;
+
+    // Estilos para el título
+    const title = modal.querySelector('h2');
+    title.style.cssText = `
+        color: var(--color-primary);
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    `;
+
+    // Estilos para párrafos
+    modal.querySelectorAll('p').forEach(p => {
+        p.style.cssText = `
+            margin-bottom: 15px;
+            color: var(--color-dark-gray);
+            line-height: 1.6;
+        `;
+    });
+
+    // Estilos para la información de contacto
+    const contactInfo = modal.querySelector('.contact-info');
+    contactInfo.style.cssText = `
+        background: var(--color-light-bg);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+    `;
+
+    contactInfo.querySelector('h3').style.cssText = `
+        color: var(--color-primary);
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    `;
+
+    const contactDetails = modal.querySelector('.contact-details');
+    contactDetails.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    `;
+
+    contactDetails.querySelectorAll('p').forEach(p => {
+        p.style.cssText = `
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        `;
+    });
+
+    // Estilos para las acciones del modal
+    const modalActions = modal.querySelector('.modal-actions');
+    modalActions.style.cssText = `
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    `;
+
+    // Estilos para el botón de WhatsApp
+    const whatsappBtn = modal.querySelector('.btn-whatsapp');
+    whatsappBtn.style.cssText = `
+        background: #25d366;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    `;
+
+    // Estilos para el botón de cerrar
+    const closeBtn = modal.querySelector('.btn-close');
+    closeBtn.style.cssText = `
+        background: var(--color-gray);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    `;
+
+    // Agregar animaciones CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes successPulse {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .btn-whatsapp:hover {
+            background: #1ea952 !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-close:hover {
+            background: #666 !important;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .success-modal-content {
+                padding: 30px 20px !important;
+                margin: 20px !important;
+            }
+            
+            .modal-actions {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .btn-whatsapp, .btn-close {
+                width: 100% !important;
+                max-width: 250px !important;
+                justify-content: center !important;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Agregar al DOM
+    document.body.appendChild(modal);
+
+    // Animar entrada
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 100);
+
+    // Cerrar modal al hacer clic en el overlay
+    overlay.addEventListener('click', () => {
+        closeSuccessModal();
+    });
+}
+
+/**
+ * Función global para abrir WhatsApp (llamada desde el modal)
+ */
+window.openWhatsApp = function(message) {
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=50683699183&text=${message}`;
+    window.open(whatsappUrl, '_blank');
+};
+
+/**
+ * Función global para cerrar el modal de éxito
+ */
+window.closeSuccessModal = function() {
+    const modal = document.querySelector('.success-modal');
+    if (modal) {
+        modal.style.opacity = '0';
+        modal.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+};
