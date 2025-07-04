@@ -842,20 +842,12 @@ p {
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-family: var(--font-primary);
-    resize: vertical; /* Permite redimensionar verticalmente */
-    min-height: 45px; /* Altura mínima para inputs */
-}
-
-.contact-form textarea {
-    min-height: 100px; /* Altura específica para textarea */
-    line-height: 1.5;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(22, 65, 147, 0.1);
 }
 
 .contact-form .btn {
@@ -1607,6 +1599,244 @@ p {
     }
     
     .hero-container {
+        padding-top: 120px; /* Un poco menos de padding en móviles */
+    }
+    
+    .hero h1,
+    .hero-section.with-nav h1 {
+        font-size: 3rem; /* Reducimos un poco en pantallas pequeñas */
+    }
+    
+    .hero .subtitle,
+    .hero-section.with-nav .subtitle {
+        font-size: 1.5rem; /* Reducimos un poco en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1,
+    .hero-section.with-nav h1 {
+        font-size: 2.5rem; /* Más pequeño en pantallas muy pequeñas */
+    }
+    
+    .hero .subtitle,
+    .hero-section.with-nav .subtitle {
+        font-size: 1.3rem; /* Más pequeño en pantallas muy pequeñas */
+    }
+}
+
+/* Ajuste para el título principal y subtítulo del hero */
+.hero-content h1 {
+    font-size: 2.5rem; /* Reducido de 3rem */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Reducido el espaciado */
+    color: white;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2rem; /* Reducido de 1.8rem */
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    font-weight: 400; /* Reducido el peso */
+    color: white;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem; /* Reducido para pantallas medianas */
+    }
+    
+    .hero-content .subtitle {
+        font-size: 1rem; /* Reducido para pantallas medianas */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 1.8rem; /* Más pequeño en móviles */
+    }
+    
+    .hero-content .subtitle {
+        font-size: 0.9rem; /* Más pequeño en móviles */
+    }
+}
+
+/* Ajuste de padding para cada sección */
+.hero-section {
+    padding-top: 120px; /* Aumentado para evitar cortes */
+    padding-bottom: 120px; /* Aseguramos espacio suficiente */
+}
+
+.features-section {
+    padding-top: 150px; /* Aumentado para mayor espacio */
+    padding-bottom: 150px;
+}
+
+.program-section {
+    padding-top: 150px; /* Aumentado para mayor espacio */
+    padding-bottom: 150px;
+}
+
+.journey-section {
+    padding-top: 150px; /* Aumentado para mayor espacio */
+    padding-bottom: 150px;
+}
+
+.testimonials-section {
+    padding-top: 150px; /* Aumentado para mayor espacio */
+    padding-bottom: 150px;
+}
+
+.cta-section {
+    padding-top: 150px; /* Aumentado para mayor espacio */
+    padding-bottom: 150px;
+}
+
+.site-footer {
+    padding-top: 100px; /* Aumentado para mayor espacio */
+    padding-bottom: 50px;
+}
+
+/* Media Queries mejoradas para todos los dispositivos */
+/* Dispositivos grandes (desktops menos de 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        width: 95%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .program-cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Dispositivos medianos (tablets menos de 992px) */
+@media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+        gap: 40px;
+        padding-top: 110px;
+    }
+    
+    .hero-content, .hero-image {
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    /* Ajuste para la imagen del hero */
+    .hero-image, .floating-container {
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .cta-section .container {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-image {
+        order: -1;
+        text-align: center;
+    }
+    
+    .cta-image img {
+        max-height: 300px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    /* Ajuste para el tamaño del logo en tablets */
+    .logo-img {
+        height: 120px !important;
+    }
+    
+    .navbar-container .container {
+        min-height: 130px;
+    }
+}
+
+/* Tablets pequeñas y móviles grandes (menos de 768px) */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 10px 0;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: white;
+        box-shadow: var(--box-shadow);
+        transition: left var(--transition-medium);
+        z-index: 999;
+        overflow-y: auto;
+    }
+    
+    .main-nav.active {
+        left: 0;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+    
+    .main-nav li {
+        margin: 0;
+    }
+    
+    .main-nav a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.2rem;
+        color: var(--color-primary); /* Cambio de color para mejor contraste */
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 60px !important;
+        padding-right: 0 !important;
+    }
+    
+    .timeline-item .timeline-dot {
+        left: 0 !important;
+    }
+    
+    .hero-container {
         padding-top: 110px;
     }
     
@@ -1967,183 +2197,4 @@ p {
 .side-menu-close:hover {
     transform: scale(1.2);
     color: var(--primary-color);
-}
-
-/* Estilos para labels del formulario */
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--color-primary);
-    font-size: 0.95rem;
-}
-
-.contact-form .form-group {
-    margin-bottom: 20px;
-}
-
-.contact-form textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-/* Modal de confirmación */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.modal.show {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-}
-
-.modal-content {
-    background-color: white;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-    overflow: hidden;
-}
-
-.modal.show .modal-content {
-    transform: scale(1);
-}
-
-.modal-header {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-    color: white;
-    padding: 25px;
-    text-align: center;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close:hover {
-    color: var(--color-accent);
-}
-
-.success-icon {
-    font-size: 4rem;
-    color: #4CAF50;
-    margin-bottom: 10px;
-    animation: checkmark 0.6s ease-in-out;
-}
-
-@keyframes checkmark {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.modal-body {
-    padding: 30px;
-    text-align: center;
-}
-
-.modal-body h3 {
-    color: var(--color-primary);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-
-.modal-body p {
-    color: var(--color-dark-gray);
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.modal-footer {
-    padding: 20px 30px 30px;
-    text-align: center;
-}
-
-.modal-footer .btn {
-    min-width: 120px;
-}
-
-/* Animación para el envío del formulario */
-.contact-form.sending {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-.contact-form.sending .btn {
-    position: relative;
-}
-
-.contact-form.sending .btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px 0 0 -10px;
-    border: 2px solid transparent;
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Responsive para el modal */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin: 20px;
-    }
-    
-    .modal-header {
-        padding: 20px 15px;
-    }
-    
-    .modal-body {
-        padding: 20px 15px;
-    }
-    
-    .modal-footer {
-        padding: 15px;
-    }
-    
-    .success-icon {
-        font-size: 3rem;
-    }
-    
-    .modal-body h3 {
-        font-size: 1.3rem;
-    }
 }
