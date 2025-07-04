@@ -229,6 +229,14 @@ function handleContactForm() {
             
             // Simular el envío del formulario (para evitar redirecciones no deseadas)
             setTimeout(() => {
+                // Capturar datos antes de limpiar el formulario
+                const datosFormulario = {
+                    nombre: nombre,
+                    email: email,
+                    telefono: telefono,
+                    mensaje: mensaje
+                };
+                
                 // Mostrar modal de éxito
                 showSuccessModal(nombre, email, telefono, mensaje);
                 
@@ -239,9 +247,8 @@ function handleContactForm() {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
-                // Enviar en segundo plano después de mostrar el modal (opcional)
-                // Esto asegura que el usuario vea el modal sin redirecciones
-                sendFormInBackground(this);
+                // Intentar enviar en segundo plano (opcional, sin mostrar errores al usuario)
+                tryBackgroundSubmit(datosFormulario);
                 
             }, 1500); // Simular tiempo de envío
         });
@@ -249,38 +256,37 @@ function handleContactForm() {
 }
 
 /**
- * Envía el formulario en segundo plano usando fetch
+ * Intenta enviar el formulario en segundo plano de forma silenciosa
  */
-function sendFormInBackground(form) {
-    // Crear FormData con los datos del formulario antes de que se limpie
-    const formData = new FormData();
-    
-    // Agregar los datos que estaban en el formulario
-    const nombre = form.querySelector('input[name="name"]').value || 'Usuario';
-    const email = form.querySelector('input[name="email"]').value || '';
-    const telefono = form.querySelector('input[name="phone"]').value || '';
-    const mensaje = form.querySelector('textarea[name="message"]').value || '';
-    
-    // Solo enviar si hay datos válidos
-    if (nombre && email && mensaje) {
-        formData.append('name', nombre);
-        formData.append('email', email);
-        formData.append('phone', telefono);
-        formData.append('message', mensaje);
-        formData.append('_captcha', 'false');
-        formData.append('_template', 'table');
-        formData.append('_subject', 'Nueva consulta - Instituto Veterinario San Martín de Porres');
-        formData.append('_autoresponse', 'Gracias por contactarnos. Hemos recibido tu consulta y nos pondremos en contacto contigo pronto.');
-        
-        // Enviar en segundo plano
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        }).catch(error => {
-            console.log('Formulario enviado localmente. Error de red (opcional):', error);
-            // No mostramos error al usuario ya que el modal ya se mostró
-        });
+function tryBackgroundSubmit(datos) {
+    // Solo intentar si hay datos válidos
+    if (!datos.nombre || !datos.email || !datos.mensaje) {
+        console.log('Datos incompletos, no se envía en segundo plano');
+        return;
     }
+    
+    // Crear FormData con los datos capturados
+    const formData = new FormData();
+    formData.append('name', datos.nombre);
+    formData.append('email', datos.email);
+    formData.append('phone', datos.telefono || '');
+    formData.append('message', datos.mensaje);
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+    formData.append('_subject', 'Nueva consulta - Instituto Veterinario San Martín de Porres');
+    formData.append('_autoresponse', 'Gracias por contactarnos. Hemos recibido tu consulta y nos pondremos en contacto contigo pronto.');
+    
+    // Intentar envío silencioso
+    fetch('https://formsubmit.co/el/nocuta', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Esto evita problemas de CORS pero no podremos leer la respuesta
+    }).then(() => {
+        console.log('Formulario posiblemente enviado en segundo plano');
+    }).catch(error => {
+        console.log('Envío en segundo plano falló silenciosamente (esto es normal):', error.message);
+        // No mostramos errores al usuario ya que el modal de éxito ya se mostró
+    });
 }
 
 /**
