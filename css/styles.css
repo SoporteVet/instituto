@@ -842,12 +842,20 @@ p {
     border-radius: var(--border-radius);
     font-size: 1rem;
     font-family: var(--font-primary);
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 45px; /* Altura mínima para inputs */
+}
+
+.contact-form textarea {
+    min-height: 100px; /* Altura específica para textarea */
+    line-height: 1.5;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(22, 65, 147, 0.1);
 }
 
 .contact-form .btn {

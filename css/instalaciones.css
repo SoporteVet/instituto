@@ -4,7 +4,7 @@
 .hero-instalaciones {
     height: 100vh;
     min-height: 600px;
-    background-image: url('../img/instalaciones.jpg');
+    background-image: url('../img/instalaciones.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
