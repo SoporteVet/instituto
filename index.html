@@ -401,16 +401,25 @@
             <div class="cta-content">
                 <h2 class="reveal">¿Estás listo para comenzar tu carrera?</h2>
                 <p class="reveal delay-1">Las inscripciones están abiertas para el próximo periodo lectivo</p>
-                <form class="contact-form reveal delay-2">
+                <form class="contact-form reveal delay-2" action="https://formsubmit.co/aaron88921@gmail.com" method="POST">
                     <div class="form-group">
-                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="text" name="name" placeholder="Nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Correo electrónico" required>
+                        <input type="email" name="email" placeholder="Correo electrónico" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Teléfono">
+                        <input type="tel" name="phone" placeholder="Teléfono">
                     </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Cuéntanos sobre tu interés en el programa o cualquier pregunta que tengas..." rows="4" required></textarea>
+                    </div>
+                    <!-- Campos ocultos para configurar FormSubmit -->
+                    <input type="hidden" name="_next" value="gracias.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="Nueva consulta - Instituto Veterinario San Martín de Porres">
+                    
                     <button type="submit" class="btn btn-primary">Solicitar información</button>
                 </form>
             </div>
