@@ -1599,244 +1599,6 @@ p {
     }
     
     .hero-container {
-        padding-top: 120px; /* Un poco menos de padding en móviles */
-    }
-    
-    .hero h1,
-    .hero-section.with-nav h1 {
-        font-size: 3rem; /* Reducimos un poco en pantallas pequeñas */
-    }
-    
-    .hero .subtitle,
-    .hero-section.with-nav .subtitle {
-        font-size: 1.5rem; /* Reducimos un poco en pantallas pequeñas */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1,
-    .hero-section.with-nav h1 {
-        font-size: 2.5rem; /* Más pequeño en pantallas muy pequeñas */
-    }
-    
-    .hero .subtitle,
-    .hero-section.with-nav .subtitle {
-        font-size: 1.3rem; /* Más pequeño en pantallas muy pequeñas */
-    }
-}
-
-/* Ajuste para el título principal y subtítulo del hero */
-.hero-content h1 {
-    font-size: 2.5rem; /* Reducido de 3rem */
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 1px; /* Reducido el espaciado */
-    color: white;
-}
-
-.hero-content .subtitle {
-    font-size: 1.2rem; /* Reducido de 1.8rem */
-    margin-bottom: 1.5rem;
-    opacity: 0.9;
-    font-weight: 400; /* Reducido el peso */
-    color: white;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem; /* Reducido para pantallas medianas */
-    }
-    
-    .hero-content .subtitle {
-        font-size: 1rem; /* Reducido para pantallas medianas */
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-content h1 {
-        font-size: 1.8rem; /* Más pequeño en móviles */
-    }
-    
-    .hero-content .subtitle {
-        font-size: 0.9rem; /* Más pequeño en móviles */
-    }
-}
-
-/* Ajuste de padding para cada sección */
-.hero-section {
-    padding-top: 120px; /* Aumentado para evitar cortes */
-    padding-bottom: 120px; /* Aseguramos espacio suficiente */
-}
-
-.features-section {
-    padding-top: 150px; /* Aumentado para mayor espacio */
-    padding-bottom: 150px;
-}
-
-.program-section {
-    padding-top: 150px; /* Aumentado para mayor espacio */
-    padding-bottom: 150px;
-}
-
-.journey-section {
-    padding-top: 150px; /* Aumentado para mayor espacio */
-    padding-bottom: 150px;
-}
-
-.testimonials-section {
-    padding-top: 150px; /* Aumentado para mayor espacio */
-    padding-bottom: 150px;
-}
-
-.cta-section {
-    padding-top: 150px; /* Aumentado para mayor espacio */
-    padding-bottom: 150px;
-}
-
-.site-footer {
-    padding-top: 100px; /* Aumentado para mayor espacio */
-    padding-bottom: 50px;
-}
-
-/* Media Queries mejoradas para todos los dispositivos */
-/* Dispositivos grandes (desktops menos de 1200px) */
-@media (max-width: 1200px) {
-    .container {
-        width: 95%;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero-content .subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .program-cards {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-}
-
-/* Dispositivos medianos (tablets menos de 992px) */
-@media (max-width: 992px) {
-    .hero-container {
-        flex-direction: column;
-        gap: 40px;
-        padding-top: 110px;
-    }
-    
-    .hero-content, .hero-image {
-        text-align: center;
-        max-width: 100%;
-    }
-    
-    /* Ajuste para la imagen del hero */
-    .hero-image, .floating-container {
-        max-width: 350px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .cta-section .container {
-        grid-template-columns: 1fr;
-    }
-    
-    .cta-image {
-        order: -1;
-        text-align: center;
-    }
-    
-    .cta-image img {
-        max-height: 300px;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    /* Ajuste para el tamaño del logo en tablets */
-    .logo-img {
-        height: 120px !important;
-    }
-    
-    .navbar-container .container {
-        min-height: 130px;
-    }
-}
-
-/* Tablets pequeñas y móviles grandes (menos de 768px) */
-@media (max-width: 768px) {
-    .site-header {
-        padding: 10px 0;
-    }
-    
-    .main-nav {
-        position: fixed;
-        top: var(--header-height);
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - var(--header-height));
-        background-color: white;
-        box-shadow: var(--box-shadow);
-        transition: left var(--transition-medium);
-        z-index: 999;
-        overflow-y: auto;
-    }
-    
-    .main-nav.active {
-        left: 0;
-    }
-    
-    .main-nav ul {
-        flex-direction: column;
-        padding: 30px 0;
-    }
-    
-    .main-nav li {
-        margin: 0;
-    }
-    
-    .main-nav a {
-        display: block;
-        padding: 15px 20px;
-        font-size: 1.2rem;
-        color: var(--color-primary); /* Cambio de color para mejor contraste */
-    }
-    
-    .menu-toggle {
-        display: block;
-    }
-    
-    .hero h1 {
-        font-size: 2.8rem;
-    }
-    
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .timeline::before {
-        left: 20px;
-    }
-    
-    .timeline-item {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 60px !important;
-        padding-right: 0 !important;
-    }
-    
-    .timeline-item .timeline-dot {
-        left: 0 !important;
-    }
-    
-    .hero-container {
         padding-top: 110px;
     }
     
@@ -1897,34 +1659,6 @@ p {
     .hero .subtitle,
     .hero-section.with-nav .subtitle {
         font-size: 1.3rem;
-    }
-    
-    /* Ajustes para tarjetas de cursos */
-    .program-card-details {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    /* Botón load more */
-    .load-more-container .btn {
-        width: 100%;
-        max-width: 280px;
-    }
-    
-    /* Ajuste para el formulario */
-    .contact-form .form-group {
-        margin-bottom: 12px;
-    }
-    
-    /* Ajustes para testimonios */
-    .testimonial-card {
-        padding: 25px;
-    }
-    
-    .testimonial-img {
-        width: 50px;
-        height: 50px;
     }
 }
 
@@ -2197,4 +1931,345 @@ p {
 .side-menu-close:hover {
     transform: scale(1.2);
     color: var(--primary-color);
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.7) translateY(-50px);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    padding: 2rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.modal-body {
+    padding: 2rem;
+    color: var(--text-color);
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.contact-info {
+    background: var(--background-medium);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.contact-info p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-info i {
+    color: var(--color-primary);
+}
+
+.modal-footer {
+    padding: 1.5rem 2rem 2rem;
+}
+
+/* Animación de entrada del modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive para el modal */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+    
+    .modal-header {
+        padding: 1.5rem;
+    }
+    
+    .success-icon {
+        font-size: 3rem;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.25rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .modal-footer {
+        padding: 1rem 1.5rem 1.5rem;
+    }
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA IPHONE ===== */
+
+/* iPhone SE y dispositivos pequeños (375px y menos) */
+@media screen and (max-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* Hero Section - Ajustar imagen de fondo */
+    .hero-background {
+        background-size: cover !important;
+        background-position: center center !important;
+        transform: none !important;
+        min-height: 300px;
+    }
+    
+    .hero-section {
+        min-height: 100vh;
+        background-attachment: scroll; /* Mejor rendimiento en móviles */
+    }
+    
+    /* Program cards - Ajustar imágenes */
+    .program-card-image {
+        height: 180px !important;
+        overflow: hidden;
+    }
+    
+    .program-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        transform: none !important;
+    }
+    
+    /* Feature cards - Ajustar iconos y contenido */
+    .feature-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    /* CTA Section imagen */
+    .cta-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        max-height: 300px !important;
+    }
+    
+    /* Testimonial images */
+    .testimonial-img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: cover !important;
+    }
+}
+
+/* iPhone 12, 13, 14 y dispositivos similares (390px - 428px) */
+@media screen and (min-width: 376px) and (max-width: 428px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* Hero Section */
+    .hero-background {
+        background-size: cover !important;
+        background-position: center 30% !important;
+        min-height: 350px;
+    }
+    
+    .hero-section {
+        background-attachment: scroll;
+    }
+    
+    /* Program cards */
+    .program-card-image {
+        height: 200px !important;
+    }
+    
+    .program-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    /* CTA Section */
+    .cta-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        max-height: 350px !important;
+    }
+}
+
+/* iPhone Pro Max y dispositivos grandes (429px y más) */
+@media screen and (min-width: 429px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* Hero Section */
+    .hero-background {
+        background-size: cover !important;
+        background-position: center 25% !important;
+        min-height: 400px;
+    }
+    
+    /* Program cards */
+    .program-card-image {
+        height: 220px !important;
+    }
+    
+    .program-card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+}
+
+/* Orientación landscape para iPhone */
+@media screen and (max-height: 480px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .hero-background {
+        background-size: cover !important;
+        background-position: center center !important;
+        min-height: 100vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 1rem !important;
+    }
+}
+
+/* Estilos generales para todos los iPhone */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    /* Optimizar todas las imágenes */
+    img {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    /* Mejorar el rendimiento del scroll */
+    .hero-section {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* Footer logo */
+    .footer-logo {
+        max-width: 120px !important;
+        height: auto !important;
+    }
+    
+    /* Logo principal */
+    .logo-img {
+        max-height: 40px !important;
+        width: auto !important;
+    }
+    
+    /* Ajustar modal para iPhone */
+    .modal-content {
+        width: 95% !important;
+        margin: 1rem !important;
+    }
+    
+    .success-icon {
+        font-size: 3rem !important;
+    }
+}
+
+/* Fix para el zoom automático en inputs en iPhone */
+@media screen and (max-width: 480px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        font-size: 16px !important; /* Previene el zoom automático */
+    }
+}
+
+/* Mejoras específicas para Safari en iPhone */
+@supports (-webkit-touch-callout: none) {
+    .hero-section {
+        background-attachment: scroll !important;
+    }
+    
+    .program-section {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* Fix para el padding safe area en iPhone con notch */
+    .navbar-container {
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    .site-footer {
+        padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+    }
 }
