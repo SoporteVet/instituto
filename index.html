@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Instituto Veterinario San Martin de Porres</title>
     <meta name="description" content="Formación profesional en técnico asistente veterinario. Aprende con los mejores especialistas y haz crecer tu carrera profesional.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/wsp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="icon" type="image/ico" href="img/ico.ico"/>
 </head>
 <body>
@@ -401,25 +402,49 @@
             <div class="cta-content">
                 <h2 class="reveal">¿Estás listo para comenzar tu carrera?</h2>
                 <p class="reveal delay-1">Las inscripciones están abiertas para el próximo periodo lectivo</p>
-                <form action="https://formsubmit.co/el/nocuta" method="POST">
-                <div class="input-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name" placeholder="Escriba su nombre completo">
-                    <label for="phone">Telefono</label>
-                    <input type="tel" name="phone" id="phone" placeholder="Teléfono">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Correo Electrónico">
-                    <label for="message">Mensaje</label>
-                    <textarea name="message" id="message" cols="60" rows="20" placeholder="En este campo ingrese el servicio que desea contratar o la cotización que desea realizar"></textarea>
-                    <input class="btn" type="submit" value="Enviar">
-                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
-                    <input type="hidden" name="_captcha" value="false">
-                </div>
+                <form class="contact-form reveal delay-2">
+                    <div class="form-group">
+                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="telefono" placeholder="Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="consulta" placeholder="¿Qué te gustaría consultar?" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Solicitar información</button>
+                </form>
+            </div>
             <div class="cta-image reveal">
                 <img src="img/estudiante.jpg" alt="Asistente Veterinario" class="shadow-img">
             </div>
         </div>
     </section>
+    
+    <!-- Modal de éxito -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>¡Mensaje enviado exitosamente!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Gracias por tu interés en el Instituto Veterinario San Martín de Porres.</p>
+                <p>Hemos recibido tu consulta y nos pondremos en contacto contigo muy pronto.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> También puedes contactarnos al: <strong>+506 8369-9183</strong></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="close-modal" class="btn btn-primary">Entendido</button>
+            </div>
+        </div>
+    </div>
     
     <!-- Footer -->
     <footer class="site-footer">
