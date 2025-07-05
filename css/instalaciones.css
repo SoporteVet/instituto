@@ -725,3 +725,184 @@
         color: white !important;
     }
 }
+
+/* ===== ESTILOS ESPECÍFICOS PARA IPHONE - INSTALACIONES ===== */
+
+/* iPhone SE y dispositivos pequeños (375px y menos) */
+@media screen and (max-width: 375px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* Hero Section - Ajustar imagen de fondo */
+    .hero-instalaciones {
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: scroll !important; /* Mejor rendimiento en iOS */
+        min-height: 100vh;
+    }
+    
+    .content-bottom {
+        max-width: 100% !important;
+        padding: 0 15px !important;
+    }
+    
+    .content-bottom h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .content-bottom .subtitle {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Slider ajustes */
+    .slide img {
+        height: 250px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    /* Area cards images */
+    .area-image {
+        height: 180px !important;
+    }
+    
+    .area-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    /* Mapa imagen */
+    .mapa-imagen img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        max-height: 250px !important;
+    }
+}
+
+/* iPhone 12, 13, 14 y dispositivos similares (390px - 428px) */
+@media screen and (min-width: 376px) and (max-width: 428px) and (-webkit-min-device-pixel-ratio: 2) {
+    .hero-instalaciones {
+        background-size: cover !important;
+        background-position: center 30% !important;
+        background-attachment: scroll !important;
+        min-height: 100vh;
+    }
+    
+    .slide img {
+        height: 300px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    .area-image {
+        height: 200px !important;
+    }
+    
+    .area-image img {
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    .mapa-imagen img {
+        max-height: 300px !important;
+        object-fit: cover !important;
+    }
+}
+
+/* iPhone Pro Max y dispositivos grandes (429px y más) */
+@media screen and (min-width: 429px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    .hero-instalaciones {
+        background-size: cover !important;
+        background-position: center 25% !important;
+        background-attachment: scroll !important;
+    }
+    
+    .slide img {
+        height: 350px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    .area-image {
+        height: 220px !important;
+    }
+}
+
+/* Orientación landscape para iPhone */
+@media screen and (max-height: 480px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    .hero-instalaciones {
+        min-height: 100vh;
+        background-size: cover !important;
+        background-position: center center !important;
+    }
+    
+    .content-bottom h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .content-bottom .subtitle {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Estilos generales para todos los iPhone */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    /* Optimizar todas las imágenes */
+    .hero-instalaciones,
+    .slide img,
+    .area-image img,
+    .mapa-imagen img,
+    .testimonio-autor img {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        perspective: 1000;
+    }
+    
+    /* Mejorar el rendimiento del scroll */
+    .hero-instalaciones {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        background-attachment: scroll !important;
+    }
+    
+    /* Testimonios autor imagen */
+    .testimonio-autor img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: cover !important;
+    }
+}
+
+/* Fix para el zoom automático en inputs en iPhone */
+@media screen and (max-width: 480px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        font-size: 16px !important; /* Previene el zoom automático */
+    }
+}
+
+/* Mejoras específicas para Safari en iPhone */
+@supports (-webkit-touch-callout: none) {
+    .hero-instalaciones {
+        background-attachment: scroll !important;
+    }
+    
+    .tour-virtual,
+    .areas-instalaciones {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* Fix para el padding safe area en iPhone con notch */
+    .navbar-container {
+        padding-top: env(safe-area-inset-top);
+    }
+}
