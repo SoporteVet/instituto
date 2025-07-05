@@ -176,7 +176,7 @@ p {
 
 /* Ajuste del tamaño del logo en el navbar */
 .logo-img {
-    height: 140px !important; /* Aumentado para un logo más grande */
+    height: 180px !important; /* Aumentado de 140px para mayor visibilidad */
     width: auto !important;
     display: block;
     transition: transform 0.3s ease;
@@ -1619,7 +1619,7 @@ p {
     
     /* Ajustar logo en móvil */
     .logo-img {
-        height: 100px !important;
+        height: 120px !important; /* Aumentado de 100px para mejor visibilidad */
     }
     
     .navbar-container .container {
@@ -1699,7 +1699,7 @@ p {
     
     /* Ajustar logo en móviles muy pequeños */
     .logo-img {
-        height: 80px !important;
+        height: 100px !important; /* Aumentado de 80px para mantener visibilidad incluso en pantallas muy pequeñas */
     }
     
     .navbar-container .container {
@@ -1750,7 +1750,7 @@ p {
     }
     
     .logo-img {
-        height: 70px !important;
+        height: 90px !important; /* Aumentado de 70px para mejor visibilidad en dispositivos extra pequeños */
     }
 }
 
@@ -2228,7 +2228,7 @@ p {
     
     /* Logo principal */
     .logo-img {
-        max-height: 40px !important;
+        max-height: 60px !important; /* Aumentado de 40px para mejor visibilidad en móviles */
         width: auto !important;
     }
     
