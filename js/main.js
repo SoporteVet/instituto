@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(() => {
             currentSlide = (currentSlide + 1) % testimonialSlides.length;
             showSlide(currentSlide);
-        }, 5000);
+        }, 7000);
     }
     
     // Funcionalidad de "Cargar más" para los cursos
@@ -194,4 +194,118 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar funciones
     revealOnScroll();
+
+    // Manejo del formulario de contacto
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener los datos del formulario
+            const formData = new FormData(this);
+            const nombre = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const telefono = this.querySelector('input[type="tel"]').value;
+            const consulta = this.querySelector('textarea').value;
+            
+            // Validación básica
+            if (!nombre || !email) {
+                alert('Por favor, completa los campos obligatorios (Nombre y Email).');
+                return;
+            }
+            
+            // Preparar los datos para enviar
+            const datos = {
+                nombre: nombre,
+                email: email,
+                telefono: telefono,
+                consulta: consulta
+            };
+            
+            // Aquí puedes elegir una de las opciones siguientes:
+            
+            // OPCIÓN 1: EmailJS (más fácil, sin servidor)
+            enviarConEmailJS(datos);
+
+            
+        });
+    }
+    
+    // OPCIÓN 1: Función para enviar con EmailJS (recomendado para empezar)
+    function enviarConEmailJS(datos) {
+        // Necesitas registrarte en https://www.emailjs.com/ y obtener tus claves
+        // Reemplaza 'TU_SERVICE_ID', 'TU_TEMPLATE_ID', 'TU_PUBLIC_KEY' con tus datos reales
+        
+        emailjs.send('service_3k362qe', 'template_hvfl8ft', {
+            from_name: datos.nombre,
+            from_email: datos.email,
+            phone: datos.telefono,
+            message: datos.consulta
+        }, 'divnQ9X5rsmoVFF1L')
+        .then(function(response) {
+            // Mostrar modal de éxito en lugar de alert
+            showSuccessModal();
+            document.querySelector('.contact-form').reset();
+        }, function(error) {
+            alert('Error al enviar el mensaje. Por favor, intenta nuevamente.');
+            console.error('Error:', error);
+        });
+    }
+    
+    // Función para mostrar el modal de éxito
+    function showSuccessModal() {
+        const modal = document.getElementById('success-modal');
+        if (modal) {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        }
+    }
+    
+    // Función para cerrar el modal
+    function closeSuccessModal() {
+        console.log('Función closeSuccessModal llamada'); // Debug
+        const modal = document.getElementById('success-modal');
+        if (modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = ''; // Restaurar scroll del body
+            console.log('Modal cerrado exitosamente'); // Debug
+        } else {
+            console.log('Modal no encontrado'); // Debug
+        }
+    }
+    
+    // Configurar event listeners para el modal
+    const modal = document.getElementById('success-modal');
+    const closeBtn = document.getElementById('close-modal');
+    
+    // Cerrar modal con el botón
+    if (closeBtn) {
+        console.log('Botón de cerrar modal encontrado'); // Debug
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Botón de cerrar modal clickeado'); // Debug
+            closeSuccessModal();
+        });
+    } else {
+        console.log('Botón de cerrar modal NO encontrado'); // Debug
+    }
+    
+    // Cerrar modal haciendo clic fuera de él
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeSuccessModal();
+            }
+        });
+    }
+    
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
+            closeSuccessModal();
+        }
+    });
+    
+  
 });
