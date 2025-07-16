@@ -92,8 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Testimonios - Control del slider
     let currentSlide = 0;
-    let isAutoPlaying = true;
-    let autoPlayInterval;
     let isMobile = window.innerWidth <= 768;
     
     function showSlide(index, direction = null) {
@@ -162,24 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    function startAutoPlay() {
-        if (autoPlayInterval) clearInterval(autoPlayInterval);
-        autoPlayInterval = setInterval(() => {
-            if (isAutoPlaying) {
-                nextSlide();
-            }
-        }, 7000);
-    }
-    
-    function stopAutoPlay() {
-        isAutoPlaying = false;
-        if (autoPlayInterval) clearInterval(autoPlayInterval);
-    }
-    
-    function resumeAutoPlay() {
-        isAutoPlaying = true;
-        startAutoPlay();
-    }
     
     // Inicializar testimonios
     if (testimonialSlides.length > 0) {
@@ -191,27 +171,21 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (leftArrow) {
             leftArrow.addEventListener('click', () => {
-                stopAutoPlay();
                 prevSlide();
-                setTimeout(resumeAutoPlay, 3000); // Reanudar después de 3 segundos
             });
         }
         
         if (rightArrow) {
             rightArrow.addEventListener('click', () => {
-                stopAutoPlay();
                 nextSlide();
-                setTimeout(resumeAutoPlay, 3000); // Reanudar después de 3 segundos
             });
         }
         
         // Indicadores clickeables
         testimonialIndicators.forEach((indicator, i) => {
             indicator.addEventListener('click', () => {
-                stopAutoPlay();
                 currentSlide = i;
                 showSlide(currentSlide);
-                setTimeout(resumeAutoPlay, 3000); // Reanudar después de 3 segundos
             });
         });
         
@@ -227,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 startX = e.touches[0].clientX;
                 currentX = startX;
                 isDragging = true;
-                stopAutoPlay();
             });
             
             testimonialSlider.addEventListener('touchmove', (e) => {
@@ -263,14 +236,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                setTimeout(resumeAutoPlay, 3000); // Reanudar después de 3 segundos
             });
             
             // Mouse events para PC (opcional, para mejor UX)
             testimonialSlider.addEventListener('mousedown', (e) => {
                 startX = e.clientX;
                 isDragging = true;
-                stopAutoPlay();
                 testimonialSlider.style.cursor = 'grabbing';
             });
             
@@ -295,20 +266,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                setTimeout(resumeAutoPlay, 3000);
             });
             
             testimonialSlider.addEventListener('mouseleave', () => {
                 if (isDragging) {
                     isDragging = false;
                     testimonialSlider.style.cursor = 'grab';
-                    setTimeout(resumeAutoPlay, 3000);
                 }
             });
         }
         
         // Iniciar auto-reproducción
-        startAutoPlay();
     }
     
     // Actualizar el estado móvil cuando cambie el tamaño de la ventana
