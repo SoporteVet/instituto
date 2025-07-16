@@ -399,12 +399,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Necesitas registrarte en https://www.emailjs.com/ y obtener tus claves
         // Reemplaza 'TU_SERVICE_ID', 'TU_TEMPLATE_ID', 'TU_PUBLIC_KEY' con tus datos reales
         
-        emailjs.send('service_9ua4k9s', 'template_35vasnc', {
+        emailjs.send('service_3k362qe', 'template_hvfl8ft', {
             from_name: datos.nombre,
             from_email: datos.email,
             phone: datos.telefono,
             message: datos.consulta
-        }, 'ZiyjOCMRsBnxJn_LT')
+        }, 'divnQ9X5rsmoVFF1L')
         .then(function(response) {
             // Mostrar modal de éxito en lugar de alert
             showSuccessModal();
