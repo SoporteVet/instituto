@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu consulta! - Instituto Veterinario San Martin de Porres</title>
+    <meta name="description" content="Gracias por contactarnos. Te responderemos pronto.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/wsp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/ico" href="img/ico.ico"/>
+    <style>
+        .thank-you-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .thank-you-content {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--color-accent);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .thank-you-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .thank-you-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1ea952;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-home {
+            background-color: var(--color-accent);
+            color: var(--color-primary);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-home:hover {
+            background-color: #d4a017;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .thank-you-content h1 {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-whatsapp, .btn-home {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://api.whatsapp.com/send?phone=50683699183&text=Hola, quiero solicitar información sobre el técnico de asistente veterinario!" class="btn-wsp" target="_blank" style="background-color: #25d366;">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section class="thank-you-section">
+        <div class="thank-you-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>¡Gracias por contactarnos!</h1>
+            <p>Hemos recibido tu consulta correctamente. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas para brindarte toda la información que necesitas sobre nuestro programa de Técnico Asistente Veterinario.</p>
+            
+            <div class="contact-info" style="margin: 30px 0; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
+                <h3 style="color: var(--color-accent); margin-bottom: 15px;">
+                    <i class="fas fa-info-circle"></i> Información de contacto
+                </h3>
+                <p style="margin: 5px 0;"><i class="fas fa-phone"></i> +506 8369-9183</p>
+                <p style="margin: 5px 0;"><i class="fas fa-envelope"></i> institutosanmartin83@gmail.com</p>
+                <p style="margin: 5px 0;"><i class="fas fa-map-marker-alt"></i> Mall Zona Centro, tercer planta, San José, Desamparados</p>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="index.html" class="btn-home">
+                    <i class="fas fa-home"></i> Volver al inicio
+                </a>
+                <a href="#" id="whatsapp-btn" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Obtener datos del formulario enviado desde localStorage
+        const formData = localStorage.getItem('formSubmitData');
+        
+        if (formData) {
+            const data = JSON.parse(formData);
+            
+            // Configurar el botón de WhatsApp con los datos del usuario
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=50683699183&text=${encodeURIComponent(data.whatsappMessage)}`;
+            whatsappBtn.href = whatsappUrl;
+            
+            // Limpiar localStorage después de usar los datos
+            localStorage.removeItem('formSubmitData');
+        } else {
+            // Si no hay datos, usar mensaje genérico
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            const defaultMessage = 'Hola, me interesa obtener más información sobre el programa de Técnico Asistente Veterinario.';
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=50683699183&text=${encodeURIComponent(defaultMessage)}`;
+            whatsappBtn.href = whatsappUrl;
+        }
+        
+        // Auto-redirección a inicio después de 30 segundos (opcional)
+        setTimeout(() => {
+            const shouldRedirect = confirm('¿Te gustaría volver a la página principal?');
+            if (shouldRedirect) {
+                window.location.href = 'index.html';
+            }
+        }, 30000);
+    </script>
+</body>
+</html>
