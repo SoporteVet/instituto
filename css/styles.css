@@ -735,6 +735,9 @@ p {
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .testimonial-card {
@@ -784,25 +787,182 @@ p {
     font-size: 0.9rem;
 }
 
+/* Contenedor principal de testimonios con flechas a los lados */
+.testimonials-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.testimonials-slider {
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+    position: relative;
+    min-height: 500px;
+}
+
+/* Animaciones para testimonios */
+.testimonial-card {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.testimonial-card.slide-out-left {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+.testimonial-card.slide-out-right {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.testimonial-card.slide-in-left {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInLeft 0.5s ease-in-out;
+}
+
+.testimonial-card.slide-in-right {
+    opacity: 1;
+    transform: translateX(0);
+    animation: slideInRight 0.5s ease-in-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Flechas a los lados del contenido */
+.testimonial-arrow {
+    background: rgba(33,150,243,0.85);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.testimonial-arrow:hover {
+    background: #2196f3;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+}
+
+.testimonial-arrow-left {
+    left: -80px;
+}
+
+.testimonial-arrow-right {
+    right: -80px;
+}
+
+/* Indicadores de testimonios visuales */
 .testimonial-indicators {
+    text-align: center;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    gap: 32px; /* Más separación entre bolitas */
 }
 
 .testimonial-indicators span {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 4px;
+    background: linear-gradient(135deg, #2196f3 60%, #fff 100%); /* Azul */
     border-radius: 50%;
-    margin: 0 5px;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    opacity: 0.6;
+    border: 2px solid #2196f3;
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    transition: all var(--transition-fast);
 }
 
 .testimonial-indicators span.active {
-    background-color: var(--color-secondary);
-    transform: scale(1.3);
+    opacity: 1;
+    background: linear-gradient(135deg, #2196f3 80%, #fff 100%); /* Azul más intenso */
+    transform: scale(1.25);
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+    border: 2px solid #fff;
+}
+
+/* Flechas de testimonios */
+.testimonial-arrow {
+    background: rgba(33,150,243,0.85); /* Azul */
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.testimonial-arrow:hover {
+    background: #2196f3;
+    box-shadow: 0 4px 16px rgba(33,150,243,0.25);
+}
+
+/* Flechas fuera del cuadro de testimonio */
+.testimonial-arrows {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 24px 0 0 0;
+    position: relative;
+    z-index: 2;
 }
 
 /* CTA Section */
@@ -1069,11 +1229,6 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: all var(--transition-fast);
-}
-
-.social-links a:hover {
-    background-color: var(--color-accent);
-    transform: translateY(-5px);
 }
 
 /* Botón de redes sociales en el footer */
@@ -1352,7 +1507,6 @@ p {
     }
 }
 
-/* Ajustes mejorados para el menú móvil */
 @media (max-width: 768px) {
     /* Botón hamburguesa */
     .menu-toggle {
