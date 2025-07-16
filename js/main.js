@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(() => {
             currentSlide = (currentSlide + 1) % testimonialSlides.length;
             showSlide(currentSlide);
-        }, 7000);
+        }, 12000);
     }
     
     // Funcionalidad de "Cargar más" para los cursos
